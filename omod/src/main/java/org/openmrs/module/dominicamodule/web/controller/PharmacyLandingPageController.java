@@ -151,14 +151,14 @@ public class PharmacyLandingPageController {
             } 
         }
         
-        System.out.println("Allergies : "+concatenatedAllergyList);
+        //System.out.println("Allergies : "+concatenatedAllergyList);
         return concatenatedAllergyList;
     }
 
 
     @RequestMapping(value = "module/dominicamodule/pharmacyLandingPage.form", method = RequestMethod.GET)
     protected ModelAndView get(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("Here in PharmDispenseController get method.");
+        //System.out.println("Here in PharmDispenseController get method.");
         removeFilledOrders();
         
         ModelMap model = new ModelMap();
@@ -244,10 +244,10 @@ public class PharmacyLandingPageController {
                 
             }
         }
-        for (Order ord : orders) {
-            System.out.println("ORDER: " + ord.getConcept().getName().getName()
-                    + ord.getPatient().getGivenName());
-        }
+//        for (Order ord : orders) {
+//            System.out.println("ORDER: " + ord.getConcept().getName().getName()
+//                    + ord.getPatient().getGivenName());
+//        }
     }
 
     @RequestMapping(value = "module/dominicamodule/pharmacyLandingPage.form", method = RequestMethod.POST)
@@ -256,7 +256,7 @@ public class PharmacyLandingPageController {
                             @RequestParam(value = "pharmInstructions") String pharmInstructions,
                             @RequestParam(value = "processValue") String processValue) {
         Date today = new Date();
-        System.out.println("Here in PharmDispenseController post method.");                
+        //System.out.println("Here in PharmDispenseController post method.");                
         Order order = Context.getOrderService().getOrder(orderId);
         DrugOrderExtension doe=service().getDrugOrderExtensionByOrderId(orderId);
 

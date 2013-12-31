@@ -6,9 +6,9 @@ import org.openmrs.module.dominicamodule.DrugOrderExtension;
 
 
 /**
- * radiologyResponse-related database functions
+ * DrugOrderExtension-related database functions
  * 
- * @author Cortex
+ * @author Akhil
  * @version 1.0
  */
 public interface DrugOrderExtensionDAO {

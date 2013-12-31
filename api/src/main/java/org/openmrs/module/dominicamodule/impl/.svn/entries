@@ -26,26 +26,3 @@ svn:special svn:externals svn:needs-lock
 
 5bac5841-c719-aa4e-b3fe-cce5062f897a
 
-NoteServiceImpl.java
-file
-
-
-
-add
-
-06d0c447cc76d2380ffb638f6dcd22ca
-
-
-
-
-
-
-
-
-
-
-
-copied
-http://svn.openmrs.org/openmrs-modules/devexamples/patientnotes/src/org/openmrs/module/patientnotes/impl/NoteServiceImpl.java
-26779
-

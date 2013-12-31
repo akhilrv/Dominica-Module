@@ -49,52 +49,6 @@ copied
 http://svn.openmrs.org/openmrs-modules/basicmodule/trunk/api/src/main/java/org/openmrs/module/basicmodule/BasicModuleActivator.java
 26569
 
-Note.java
-file
-
-
-
-add
-
-1eb4f347852ab3905a9b7f3a3525c99e
-
-
-
-
-
-
-
-
-
-
-
-copied
-http://svn.openmrs.org/openmrs-modules/devexamples/patientnotes/src/org/openmrs/module/patientnotes/Note.java
-26779
-
-NoteService.java
-file
-
-
-
-add
-
-698b8c64f13af4c8ef32007af663c6c4
-
-
-
-
-
-
-
-
-
-
-
-copied
-http://svn.openmrs.org/openmrs-modules/devexamples/patientnotes/src/org/openmrs/module/patientnotes/NoteService.java
-26779
-
 db
 dir
 

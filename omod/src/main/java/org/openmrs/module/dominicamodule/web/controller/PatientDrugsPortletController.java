@@ -87,7 +87,7 @@ public class PatientDrugsPortletController {
 
     @RequestMapping(method = RequestMethod.GET)
     protected ModelAndView get(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("Here in controller get method.");
+    //    System.out.println("Here in controller get method.");
 
         Integer patientId = Integer.valueOf(request.getParameter("patientId"));
         Patient p = Context.getPatientService().getPatient(patientId);
@@ -114,7 +114,7 @@ public class PatientDrugsPortletController {
         orders = Context.getOrderService().getDrugOrdersByPatient(p);
         
         for (DrugOrder ord : orders) {
-            System.out.println("ORDER: " + ord.getConcept().getName().getName());
+      //      System.out.println("ORDER: " + ord.getConcept().getName().getName());
             drugOrderExtensions.add(service().getDrugOrderExtensionByOrderId(ord.getOrderId()));
             frequency.add(Frequency.getAllFullNames().get(Integer.valueOf(ord.getFrequency())));
             units.add(Units.values()[Integer.valueOf(ord.getUnits())]);
@@ -225,79 +225,79 @@ public class PatientDrugsPortletController {
 ////        model.put("orders",orders);
 ////        return new ModelAndView("/module/dominicamodule/portlets/patientDrugs", model);
 //    }
-    @RequestMapping(method = RequestMethod.POST,params="saveOrder")
-    public ModelAndView postSave(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("order") DrugOrder order) {
-        Integer patientId = Integer.valueOf(request.getParameter("patientId"));
-        Patient p = Context.getPatientService().getPatient(patientId);
-        System.out.println("Here in co  ntroller post method.");
-        if (order == null) {            
-            System.out.println("In Pst =Null");
-        } else {
-            try {
-//                if (request.getParameter("voidDrugOrder")!=null)
-//                {
-//                    Integer orderID=Integer.valueOf(request.getParameter("orderId"));
-//                    DrugOrder order_void=Context.getOrderService().getOrder(orderID,DrugOrder.class);
-//                    System.out.println("Voiding Order :"+orderID+" Void Reason: "+order.getVoidReason());
-//                    Context.getOrderService().voidOrder(order_void, order.getVoidReason());
-//                    request.getSession().setAttribute(WebConstants.OPENMRS_MSG_ATTR,"Order.voidedSuccessfully");
+//    @RequestMapping(method = RequestMethod.POST,params="saveOrder")
+//    public ModelAndView postSave(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("order") DrugOrder order) {
+//        Integer patientId = Integer.valueOf(request.getParameter("patientId"));
+//        Patient p = Context.getPatientService().getPatient(patientId);
+//        System.out.println("Here in co  ntroller post method.");
+//        if (order == null) {            
+//            System.out.println("In Pst =Null");
+//        } else {
+//            try {
+////                if (request.getParameter("voidDrugOrder")!=null)
+////                {
+////                    Integer orderID=Integer.valueOf(request.getParameter("orderId"));
+////                    DrugOrder order_void=Context.getOrderService().getOrder(orderID,DrugOrder.class);
+////                    System.out.println("Voiding Order :"+orderID+" Void Reason: "+order.getVoidReason());
+////                    Context.getOrderService().voidOrder(order_void, order.getVoidReason());
+////                    request.getSession().setAttribute(WebConstants.OPENMRS_MSG_ATTR,"Order.voidedSuccessfully");
+////                }
+//                 if (request.getParameter("saveOrder")!=null) {
+//                        order.setUnits(request.getParameter("units"));
+//                        System.out.println("Concept: " + order.getConcept().getId());
+//                        System.out.println("Start Date: " + order.getStartDate());
+//                        System.out.println("Dose : " + order.getDose());
+//                        System.out.println("Units: " + order.getUnits());
+//                        System.out.println("Frequency: " + order.getFrequency());
+//                        System.out.println("Instructions: " + order.getInstructions());
+//                            System.out.println("Duration time: " + request.getParameter("durationperiod"));
+//                        //System.out.println("Encounter : " + order.getEncounter().getEncounterDatetime().toString());
+//                        System.out.println("Patient: " + patientId);
+//                        order.setDiscontinuedReasonNonCoded(request.getParameter("durationperiod"));
+//                        order.setPatient(p);
+//                        order.setOrderType(drugOrderType);
+//                        order.setOrderer(Context.getUserContext().getAuthenticatedUser());
+//                        Context.getOrderService().saveOrder(order);
 //                }
-                 if (request.getParameter("saveOrder")!=null) {
-                        order.setUnits(request.getParameter("units"));
-                        System.out.println("Concept: " + order.getConcept().getId());
-                        System.out.println("Start Date: " + order.getStartDate());
-                        System.out.println("Dose : " + order.getDose());
-                        System.out.println("Units: " + order.getUnits());
-                        System.out.println("Frequency: " + order.getFrequency());
-                        System.out.println("Instructions: " + order.getInstructions());
-                            System.out.println("Duration time: " + request.getParameter("durationperiod"));
-                        //System.out.println("Encounter : " + order.getEncounter().getEncounterDatetime().toString());
-                        System.out.println("Patient: " + patientId);
-                        order.setDiscontinuedReasonNonCoded(request.getParameter("durationperiod"));
-                        order.setPatient(p);
-                        order.setOrderType(drugOrderType);
-                        order.setOrderer(Context.getUserContext().getAuthenticatedUser());
-                        Context.getOrderService().saveOrder(order);
-                }
-                
-            } catch (Exception e) {
-                System.out.println("*****Could not save order******: " + e);
-            }
-
-        }
-
-        List<DrugOrder> orders = new Vector<DrugOrder>();
-
-////        
-////        // Following works for no orders, but I get an error from entering a new order
-////        // still places order since when I go to manage drug order I see prior orders
-        orders = Context.getOrderService().getDrugOrdersByPatient(p);
-        for (Order ord : orders) {
-            System.out.println("ORDER: " + ord.getConcept().getName().getName());
-        }
-////        
-        
-        
-        ModelMap model = new ModelMap();
-        model.put("orders", orders);
-        DrugOrder order2 = new DrugOrder();
-        model.put("order", new DrugOrder());  
-//        ModelAndView mav=new ModelAndView();
-//        mav.addObject("orders", orders);
-//        mav.addObject("order", new DrugOrder());
-//        mav.setViewName("redirect:/patientDashboard.form?patientId="+patientId);
-//        return mav;
-        return new ModelAndView("/module/dominicamodule/portlets/patientDrugs", model);
-        //return get(request,response);
-        /*
-         ModelAndView mav = new ModelAndView("/module/dominicamodule/portlets/patientDrugs");
-         DrugOrder order2 = new DrugOrder();
-         //mav.addObject("order", order2);
-         mav.addObject("orders", orders);
-         */
-
-        //return mav;
-    }
+//                
+//            } catch (Exception e) {
+//                System.out.println("*****Could not save order******: " + e);
+//            }
+//
+//        }
+//
+//        List<DrugOrder> orders = new Vector<DrugOrder>();
+//
+//////        
+//////        // Following works for no orders, but I get an error from entering a new order
+//////        // still places order since when I go to manage drug order I see prior orders
+//        orders = Context.getOrderService().getDrugOrdersByPatient(p);
+//        for (Order ord : orders) {
+//            System.out.println("ORDER: " + ord.getConcept().getName().getName());
+//        }
+//////        
+//        
+//        
+//        ModelMap model = new ModelMap();
+//        model.put("orders", orders);
+//        DrugOrder order2 = new DrugOrder();
+//        model.put("order", new DrugOrder());  
+////        ModelAndView mav=new ModelAndView();
+////        mav.addObject("orders", orders);
+////        mav.addObject("order", new DrugOrder());
+////        mav.setViewName("redirect:/patientDashboard.form?patientId="+patientId);
+////        return mav;
+//        return new ModelAndView("/module/dominicamodule/portlets/patientDrugs", model);
+//        //return get(request,response);
+//        /*
+//         ModelAndView mav = new ModelAndView("/module/dominicamodule/portlets/patientDrugs");
+//         DrugOrder order2 = new DrugOrder();
+//         //mav.addObject("order", order2);
+//         mav.addObject("orders", orders);
+//         */
+//
+//        //return mav;
+//    }
 
 //    @RequestMapping(method = RequestMethod.POST,params="voidDrugOrder")
 //    public ModelAndView postVoid(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("order") DrugOrder order) {

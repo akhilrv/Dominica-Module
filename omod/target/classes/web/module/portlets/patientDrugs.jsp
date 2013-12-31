@@ -70,11 +70,7 @@
     
 <script type="text/javascript">
     var $j=jQuery.noConflict();               
-    function validateForm(){
-            var dur=$j('#duration').val();
-            alert("check "+dur);
-            return true;
-    };
+    
         $j(document).ready(function() {
                 $j('#closeForm').hide();
                 $j('.drugOrderList').click(function(e) {
@@ -96,13 +92,6 @@
                     $j('#closeForm').hide();
                 });
                 
-                $j("form#drugOrderExtensionForm.box").submit(function(e) {
-                            // check validation
-                            alert("submitted");
-                            var valid=validateForm();
-                            if (valid==false){
-                                e.preventDefault();
-                            }    
-                            });                                              
+                                                              
   });  
 </script>    

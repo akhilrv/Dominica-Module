@@ -6,7 +6,6 @@
 <hibernate-configuration>
 	<session-factory>
 		<mapping resource="DrugOrderExtension.hbm.xml" />
-<mapping resource="Note.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>

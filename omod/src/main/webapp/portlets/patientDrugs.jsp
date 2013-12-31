@@ -70,26 +70,7 @@
     
 <script type="text/javascript">
     var $j=jQuery.noConflict();               
-    function validateForm(){
-            var concept=$j('#concept_id_selection').valueOf();
-            var startDate=$j('#orderStartDate').valueOf();
-            
-            var dur=$j('#duration').val();
-            var dur_unit=$j('select[name="durationUnit"]').valueOf();
-            
-            var dose=$j('#dose').valueOf();
-            var dose_unit=$j('select[name="units"]').valueOf();
-            
-            var frequency=$j('').valueOf();
-            var quantity=$j('').valueOf();
-            
-            var instruction=$j('').valueOf();
-            
-            var route=$j('').valueOf();
-            
-            alert("check "+dur);
-            return true;
-    };
+    
         $j(document).ready(function() {
                 $j('#closeForm').hide();
                 $j('.drugOrderList').click(function(e) {
@@ -111,13 +92,6 @@
                     $j('#closeForm').hide();
                 });
                 
-                $j("form#drugOrderExtensionForm.box").submit(function(e) {
-                            // check validation
-                            alert("submitted");
-                            var valid=validateForm();
-                            if (valid==false){
-                                e.preventDefault();
-                            }    
-                            });                                              
+                                                              
   });  
 </script>    

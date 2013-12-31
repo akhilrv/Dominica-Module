@@ -150,13 +150,13 @@ public class ApproveRestrictedDrugOrders {
             } 
         }
         
-        System.out.println("Allergies : "+concatenatedAllergyList);
+     //   System.out.println("Allergies : "+concatenatedAllergyList);
         return concatenatedAllergyList;
     }
 
     @RequestMapping(value = "/module/dominicamodule/approveRestrictedDrugOrders.form", method = RequestMethod.GET)
     protected ModelAndView get(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("Here in PharmDispenseController get method.");
+       // System.out.println("Here in PharmDispenseController get method.");
         removeFilledOrders();
         
         ModelMap model = new ModelMap();
@@ -209,10 +209,10 @@ public class ApproveRestrictedDrugOrders {
                 units.add(DrugOrderExtension.Units.values()[Integer.valueOf(order.getUnits())]);
             }
         }
-        for (Order ord : orders) {
-            System.out.println("ORDER: " + ord.getConcept().getName().getName()
-                    + ord.getPatient().getGivenName());
-        }
+//        for (Order ord : orders) {
+//            System.out.println("ORDER: " + ord.getConcept().getName().getName()
+//                    + ord.getPatient().getGivenName());
+//        }
     }
     
     @RequestMapping(value="module/dominicamodule/portlets/approveDrugs.form",method=RequestMethod.GET)
@@ -239,7 +239,7 @@ public class ApproveRestrictedDrugOrders {
                             @RequestParam(value = "processValue") String processValue,
                             @RequestParam(value = "comments") String comments) {
         Date today = new Date();
-        System.out.println("Here in ApproveDrugsController post method.");                
+        //System.out.println("Here in ApproveDrugsController post method.");                
         Order order = Context.getOrderService().getOrder(orderId);
         DrugOrderExtension doe=service().getDrugOrderExtensionByOrderId(orderId);
 

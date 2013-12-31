@@ -47,10 +47,10 @@ public class AdminList extends AdministrationSectionExt {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map.put("module/dominicamodule/dominicamoduleLink.form", "Patients in System");
+	//	map.put("module/dominicamodule/dominicamoduleLink.form", "Patients in System");
                 map.put("module/dominicamodule/pharmacyLandingPage.form", "Pharmacy : Outstanding Orders ");
 		map.put("module/dominicamodule/approveRestrictedDrugOrders.form", "Manage Restricted Drug Order");
-                map.put("module/dominicamodule/dominicamoduleLink2.form", "Manage Drug Orders ");
+        //        map.put("module/dominicamodule/dominicamoduleLink2.form", "Manage Drug Orders ");
 		return map;
 	}
 	

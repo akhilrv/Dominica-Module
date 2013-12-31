@@ -177,8 +177,9 @@
             </c:when>
             <c:otherwise>
                 <input type="submit" name="saveOrder" value="Save Order" disabled="disabled"/>
-            </c:otherwise>
-    </c:choose>    
+            </c:otherwise>               
+    </c:choose>
+     <div id="validationAlert" style="color: red"></div>                
 </form>    
 
     
@@ -282,6 +283,72 @@
     });
     
     
+    
+    $j("form#drugOrderExtensionForm.box").submit(function(e) {
+                            // check validation                                                       
+                            var valid=validateForm();
+                            if (valid!=true){
+                                $j('#validationAlert').html('*** '+valid+' ***');
+                                return false;
+                            }                                                            
+     });
+    
+    function validateForm(){
+            //console.log('In validate function.');
+            var message="";
+            var concept=$j('form#drugOrderExtensionForm.box #concept_id_selection').val();
+            
+            if (concept===''){
+                return "Empty Drug : Please enter a drug to order";
+            }
+            var startDate=$j('form#drugOrderExtensionForm.box #orderStartDate').val();
+            
+            if (startDate===''){
+                return "Empty Start Date : Please enter a start date to order";
+            }
+            
+            var dur=$j('form#drugOrderExtensionForm.box #duration').val();
+            if (dur==='' || isNaN(dur) || dur<=0){
+                return "Empty Duration : Please enter a duration(number above 0) to order";
+            }
+            
+            var dur_unit=$j('form#drugOrderExtensionForm.box select[name="durationUnit"]').val();                        
+            if (dur_unit<0){
+                return "Empty Duration Unit : Please choose a duration unit";
+            }
+            
+            var dose=$j('form#drugOrderExtensionForm.box #dose').val();            
+            if (dose==='' || isNaN(dose) || dose<=0){
+                return "Empty Dose : Please enter a dose(number above 0)";
+            }
+            
+            var dose_unit=$j('form#drugOrderExtensionForm.box select[name="units"]').val();            
+            if (dose_unit<0){
+                return "Empty Dose Unit : Please choose a dose unit";
+            }
+            
+//            var frequency=$j('select[name="frequency"]').val();
+//            if (frequency){
+//                return "Empty Frequency : Please choose a frequency";
+//            }
+            
+            var quantity=$j('form#drugOrderExtensionForm.box #quantity').val();
+            if (quantity==='' || isNaN(quantity) || quantity<=0){
+                return "Empty Quantity : Please enter a Quantity(number above 0) to order";
+            }
+            
+            var instructions=$j('form#drugOrderExtensionForm.box #instructions').val();
+            if (instructions===''){
+                return "Empty Instructions : Please enter Instructions to order";
+            }
+        
+//            var route=$j('select[name="routeOfAdministration"]').val();
+//            if (!!route){
+//                return "Empty Route of Administration : Please choose a Route of Administration";
+//            }
+                                   
+            return true;            
+    };
         
     });  
 </script>    
